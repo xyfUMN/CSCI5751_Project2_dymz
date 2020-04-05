@@ -4,8 +4,9 @@ counter=0
 option=$1
 
 sales_directory=~/salesdb
-hdfs_directory=/salesdb
+hdfs_directory=/hdfs_salesdb
 path_to_files=$(pwd)
+sql_DIR="$(cd ".." && cd "./sql_scripts" && pwd)"
 
 display_help(){
     echo "-h display all options"
@@ -70,6 +71,18 @@ get_data() {
 
 }
 
+create_raw() {
+   echo creating raw tables on csv files
+   impala-shell -f "$sql_DIR"/ddl_create_sales_raw.sql
+
+}
+
+drop_raw_database() {
+   echo Dropping databse and cascade tables
+   impala-shell -q "DROP DATABASE IF EXISTS dymz_sales_raw CASCADE;"
+
+}
+
 ###########################################
 # Run Time Commands
 ###########################################
@@ -85,8 +98,13 @@ while [ $counter -eq 0 ]; do
       -l | --load)
           load_rawdata
           ;;
+
+      -c | --create)
+          create_raw
+          ;;
       -d | --distroy)
           delete_hdfs_raw
+	  drop_raw_database
           ;;
       --)
         shift
