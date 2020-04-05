@@ -83,6 +83,18 @@ drop_raw_database() {
 
 }
 
+create_database_from_raw() {
+   echo creating tables from raw database
+   impala-shell -f "$sql_DIR"/ddl_create_sales_from_raw.sql
+
+}
+
+drop_sales_database() {
+   echo Dropping databse and cascade tables
+   impala-shell -q "DROP DATABASE IF EXISTS dymz_sales CASCADE;"
+
+}
+
 ###########################################
 # Run Time Commands
 ###########################################
@@ -102,8 +114,19 @@ while [ $counter -eq 0 ]; do
       -c | --create)
           create_raw
           ;;
-      -d | --distroy)
+
+      -g | --create)
+          create_database_from_raw
+          ;;
+
+      -dg | --create)
+          drop_sales_database
+          ;;
+
+      -dh | --distroy)
           delete_hdfs_raw
+          ;;
+      -dr | --distroy)
 	  drop_raw_database
           ;;
       --)

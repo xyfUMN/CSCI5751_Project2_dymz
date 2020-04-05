@@ -16,7 +16,7 @@ COMMENT 'Raw sales data imported from salesDB';
 
 
 --Create External cars Table
-CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.Sales (
+CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.sales (
 OrderID int,
 SalesPersonID int,
 CustomerID int,
@@ -31,7 +31,7 @@ LOCATION '/hdfs_salesdb/Sales2'
 TBLPROPERTIES ("skip.header.line.count"="1");
 
 --Create External cars Table
-CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.Employees (
+CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.employees (
 EmployeeID int,
 FirstName varchar,
 MiddleInitial varchar,
@@ -45,7 +45,7 @@ LOCATION '/hdfs_salesdb/Employees2'
 TBLPROPERTIES ("skip.header.line.count"="1");
 
 --Create External cars Table
-CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.Customers (
+CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.customers (
 CustomerID int,
 FirstName varchar,
 MiddleInitial varchar,
@@ -58,10 +58,10 @@ LOCATION '/hdfs_salesdb/Customers2'
 TBLPROPERTIES ("skip.header.line.count"="1");
 
 --Create External cars Table
-CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.Products (
+CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.products (
 ProductID int,
 Name varchar,
-Price decimal)
+Price decimal(31,4))
 COMMENT 'Products table'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'
@@ -71,7 +71,7 @@ TBLPROPERTIES ("skip.header.line.count"="1");
 
 
 invalidate metadata;
-compute stats ${var:database_name}.Sales;
-compute stats ${var:database_name}.Employees;
-compute stats ${var:database_name}.Customers;
-compute stats ${var:database_name}.Products;
+compute stats ${var:database_name}.sales;
+compute stats ${var:database_name}.employees;
+compute stats ${var:database_name}.customers;
+compute stats ${var:database_name}.products;
