@@ -15,7 +15,7 @@ Create Database IF NOT EXISTS ${var:database_name}
 COMMENT 'Raw sales data imported from salesDB';
 
 
---Create External cars Table
+--Create External sales Table
 CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.sales (
 OrderID int,
 SalesPersonID int,
@@ -30,7 +30,7 @@ STORED AS TEXTFILE
 LOCATION '/hdfs_salesdb/Sales2'
 TBLPROPERTIES ("skip.header.line.count"="1");
 
---Create External cars Table
+--Create External employees Table
 CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.employees (
 EmployeeID int,
 FirstName varchar,
@@ -44,7 +44,7 @@ STORED AS TEXTFILE
 LOCATION '/hdfs_salesdb/Employees2'
 TBLPROPERTIES ("skip.header.line.count"="1");
 
---Create External cars Table
+--Create External customers Table
 CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.customers (
 CustomerID int,
 FirstName varchar,
@@ -57,11 +57,11 @@ STORED AS TEXTFILE
 LOCATION '/hdfs_salesdb/Customers2'
 TBLPROPERTIES ("skip.header.line.count"="1");
 
---Create External cars Table
+--Create External products Table
 CREATE EXTERNAL TABLE IF NOT EXISTS ${var:database_name}.products (
 ProductID int,
 Name varchar,
-Price decimal(31,4))
+Price decimal(38,18))
 COMMENT 'Products table'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '|'

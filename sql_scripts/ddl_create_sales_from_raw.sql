@@ -31,13 +31,13 @@ STORED AS Parquet
 AS
 SELECT * from ${var:source_database}.customers;
 
---Create Parquet products Table
-CREATE TABLE IF NOT EXISTS ${var:database_name}.products
-COMMENT 'Parquet products table'
-STORED AS Parquet
-AS
-SELECT * from ${var:source_database}.products;
 
+--Create Parquet cars Table
+CREATE TABLE IF NOT EXISTS ${var:database_name}.products
+COMMENT 'Products Parquet table'
+STORED AS Parquet
+As
+SELECT * from ${var:source_database}.products;
 
 invalidate metadata;
 compute stats ${var:database_name}.sales;

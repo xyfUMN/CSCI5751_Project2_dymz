@@ -85,6 +85,7 @@ drop_raw_database() {
 
 create_database_from_raw() {
    echo creating tables from raw database
+   sudo hdfs dfs chown -R impala:impala hdfs://Server:8020/desarrollo/data/des/log/log_wf 
    impala-shell -f "$sql_DIR"/ddl_create_sales_from_raw.sql
 
 }
@@ -95,6 +96,25 @@ drop_sales_database() {
 
 }
 
+create_views(){
+    echo Create views1 from dymz_sales database
+    impala-shell -f "$sql_DIR"/step2a.sql
+}
+
+drop_views(){
+    echo Removing sales views 2
+    impala-shell -q "Drop VIEW IF EXISTS dymz_sales.customer_monthly_sales_2019_view;"
+}
+
+create_views2(){
+    echo Create views2 from dymz_sales database
+    impala-shell -f "$sql_DIR"/top_ten_customers.sql
+}
+
+drop_views2(){
+    echo Removing sales views 2
+    impala-shell -q "Drop VIEW IF EXISTS dymz_sales.top_ten_customers_amount_view;"
+}
 ###########################################
 # Run Time Commands
 ###########################################
@@ -118,6 +138,12 @@ while [ $counter -eq 0 ]; do
       -g | --create)
           create_database_from_raw
           ;;
+      -cv | --createviews)
+          create_views
+          ;;
+      -cv2 | --createviews)
+          create_views2
+          ;;
 
       -dg | --create)
           drop_sales_database
@@ -128,6 +154,14 @@ while [ $counter -eq 0 ]; do
           ;;
       -dr | --distroy)
 	  drop_raw_database
+          ;;
+      -dall | --distroy)
+	
+	drop_views
+ 	drop_views2
+	drop_sales_database
+	drop_raw_database
+	delete_hdfs_raw
           ;;
       --)
         shift
