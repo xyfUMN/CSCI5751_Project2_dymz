@@ -115,6 +115,37 @@ drop_views2(){
     echo Removing sales views 2
     impala-shell -q "Drop VIEW IF EXISTS dymz_sales.top_ten_customers_amount_view;"
 }
+
+create_product_sales_partition(){
+    echo Create product_sales partition from dymz_sales database
+    impala-shell -f "$sql_DIR"/Step3a.sql
+}
+
+drop_product_sales_partition(){
+    echo drop product_sales partition from dymz_sales database
+    impala-shell -q "DROP TABLE IF EXISTS dymz_sales.product_sales_partition;"
+}
+
+create_views3b(){
+    echo Create views3b from dymz_sales database
+    impala-shell -f "$sql_DIR"/Step3b.sql
+}
+
+drop_views3b(){
+    echo Removing sales views 3b
+    impala-shell -q "Drop VIEW IF EXISTS dymz_sales.customer_monthly_sales_2019_partitioned_view;"
+}
+
+create_product_region_sales_partition(){
+    echo Create product_sales partition from dymz_sales database
+    impala-shell -f "$sql_DIR"/Step3c.sql
+}
+
+drop_product_region_sales_partition(){
+    echo drop product_sales partition from dymz_sales database
+    impala-shell -q "DROP TABLE IF EXISTS dymz_sales.product_region_sales_partition;"
+}
+
 ###########################################
 # Run Time Commands
 ###########################################
@@ -138,6 +169,19 @@ while [ $counter -eq 0 ]; do
       -g | --create)
           create_database_from_raw
           ;;
+
+      -3a | --create)
+          create_product_sales_partition
+          ;;
+
+      -3b | --create)
+          create_views3b
+          ;;
+
+      -3c | --create)
+          create_product_region_sales_partition
+          ;;
+
       -cv | --createviews)
           create_views
           ;;
@@ -148,6 +192,15 @@ while [ $counter -eq 0 ]; do
       -dg | --create)
           drop_sales_database
           ;;
+      -d3a | --create)
+          drop_product_sales_partition
+          ;;
+      -d3b | --create)
+          drop_views3b
+          ;;
+      -d3c | --create)
+          drop_product_region_sales_partition
+          ;;
 
       -dh | --distroy)
           delete_hdfs_raw
@@ -156,7 +209,9 @@ while [ $counter -eq 0 ]; do
 	  drop_raw_database
           ;;
       -dall | --distroy)
-	
+	drop_product_region_sales_partition
+        drop_views3b
+        drop_product_sales_partition
 	drop_views
  	drop_views2
 	drop_sales_database

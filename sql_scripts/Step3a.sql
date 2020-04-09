@@ -19,7 +19,7 @@ AS
         day(a.`date`) AS OrderDate,
         year(a.`date`) AS SalesYear,
         month(a.`date`) AS SalesMonth
-        from sales a, products b
+        from ${var:database_name}.sales a, ${var:database_name}.products b
         where a.productid = b.productid);
 
 invalidate metadata;

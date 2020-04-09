@@ -9,7 +9,7 @@ COMMENT 'Parquet region and sales materialized table'
 STORED AS Parquet
 AS
 (select a.*, b.region
-        from product_sales_partition a, employees b,
+        from ${var:database_name}.product_sales_partition a, ${var:database_name}.employees b
         where a.salespersonid = b.employeeid);
 
 invalidate metadata;
