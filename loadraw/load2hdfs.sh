@@ -6,12 +6,43 @@ option=$1
 sales_directory=~/salesdb
 hdfs_directory=/hdfs_salesdb
 path_to_files=$(pwd)
+
 sql_DIR="$(cd ".." && cd "./sql_scripts" && pwd)"
+if [ $? -ne 0 ]
+then
+    echo "running from main.sh"
+    sql_DIR="$(cd "./sql_scripts" && pwd)"
+else
+    echo "running from /loadraw/load2hdfs.sh"
+fi
+
+
 
 display_help(){
     echo "-h display all options"
     echo "-l load raw data into HDFS"
-    echo "-d load remove raw data in HDFS"
+    echo "-dall remove all files and tables and databases"  
+  
+    echo "-c create database_raw from the hdfs"
+    echo "-g create database and parquet tables from database_raw"
+    echo "-cv create view customer_monthly_sales_2019_view"    
+    echo "-cv2 top_ten_customers_amount_view"    
+    echo "-3a do job for deliveable 3a"
+    echo "-3b do job for deliveable 3b"    
+    echo "-3c do job for deliveable 3c"
+
+
+    echo "-d3a undo deliveable 3a"
+    echo "-d3b undo deliveable 3b"
+    echo "-d3c undo deliveable 3c"
+
+    echo "-dcv2 delete view top_ten_customers_amount_view"
+    echo "-dcv delete view customer_monthly_sales_2019_view"
+    echo "-dh delete hdfs files"
+    echo "-dr delete database_raw"
+
+    echo "root dir is ${path_to_files}"
+    echo "sql scripts dir is ${sql_DIR}"
 }
 
 load_rawdata(){
@@ -192,6 +223,14 @@ while [ $counter -eq 0 ]; do
       -dg | --create)
           drop_sales_database
           ;;
+
+      -dcv | --create)
+          drop_views
+          ;;
+      -dcv2 | --create)
+          drop_views2
+          ;;
+
       -d3a | --create)
           drop_product_sales_partition
           ;;
