@@ -30,7 +30,7 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
  
   * dymz_sales: This database includes managed tables in parquet format from the raw sales data and the views created from raw    data.<br/>
 * 3. List of Tables Created:(syntax: [database_name].[table_name])<br/>
-  * attributes for each table ref to sales data model fig listed above<br/>
+  * attributes for each table reffrence to sales data model figure listed above<br/>
   * External Tables:<br/>
    	* dymz_sales_raw.sales, dymz_sales_raw.employees, dymz_sales_raw.customers, dymz_sales_raw.products<br/>
     	* Created and loaded the table based on the structure and content of the given raw csv files.<br/>
