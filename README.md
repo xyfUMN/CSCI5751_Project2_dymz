@@ -26,7 +26,8 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
 ![alt text](https://github.com/xyfUMN/CSCI5751_Project2_dymz/blob/master/sales_data_model.png)
 
 * 2. List of Databases Created:<br/>
-  * dymz_sales_raw: This database is created from the raw data provided from https://csci5751-2020sp.s3-us-west-    2.amazonaws.com/sales-data/salesdata.tar.gz. (This raw data contains the csv files)<br/>
+  * dymz_sales_raw: This database is created from the raw data provided from 
+  https://csci5751-2020sp.s3-us-west-2.amazonaws.com/sales-data/salesdata.tar.gz. (This raw data contains the csv files)<br/>
  
   * dymz_sales: This database includes managed tables in parquet format from the raw sales data and the views created from raw    data.<br/>
 * 3. List of Tables Created:(syntax: [database_name].[table_name])<br/>
