@@ -32,21 +32,21 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
 * 3. List of Tables Created:(syntax: [database_name].[table_name])<br/>
   * attributes for each table ref to sales data model fig listed above<br/>
   * External Tables:<br/>
-   * dymz_sales_raw.sales, dymz_sales_raw.employees, dymz_sales_raw.customers, dymz_sales_raw.products<br/>
-    * Created and loaded the table based on the structure and content of the given raw csv files.<br/>
-    * Parquet Tables: <br/>
-    * dymz_sales.sales, dymz_sales.employees, dymz_sales.customers, dymz_sales.products<br/>
-    * dymz_sales.product_sales_partition, dymz_sales.product_region_sales_partition<br/>
+   	* dymz_sales_raw.sales, dymz_sales_raw.employees, dymz_sales_raw.customers, dymz_sales_raw.products<br/>
+    	* Created and loaded the table based on the structure and content of the given raw csv files.<br/>
+    	* Parquet Tables: <br/>
+    	* dymz_sales.sales, dymz_sales.employees, dymz_sales.customers, dymz_sales.products<br/>
+    	* dymz_sales.product_sales_partition, dymz_sales.product_region_sales_partition<br/>
 
 * 4. List of Views:<br/>
-    * dymz_sales.customer_monthly_sales_2019_view:<br/>
-     * This view contains the following attributes; customer id, customer last name, customer first name, year, month,      aggregate<br/> total amount of all products purchased by month for 2019.<br/>
-    * dymz_sales.top_ten_customers_amount_view	<br/>
-     * This view has the following attributes, Customer id, customer last name, customer first name, customer middle initial and total lifetime purchased amount.<br/>
-     * It returns the top ten customers sorted by total dollar amount in sales from highest to lowest.<br/>
-    * dymz_sales.customer_monthly_sales_2019_partitioned_view<br/>
-     * This view contains the following attributes Customerid, Lastname, Firstname, Salesyear, Salesmonth, Total<br/>
-     * Unpartitioned views: Fetched 6597 row(s) in 5.35s<br/>
-     * Partitioned views:Fetched 6597 row(s) in 6.96s<br/>
-     * In our case, sometimes we experience inconsistent performance due to network latency which results in the unpartitioned view to be faster than the partitioned view.<br/>
+    	* dymz_sales.customer_monthly_sales_2019_view:<br/>
+     	* This view contains the following attributes; customer id, customer last name, customer first name, year, month,      aggregate<br/> total amount of all products purchased by month for 2019.<br/>
+   	 * dymz_sales.top_ten_customers_amount_view	<br/>
+     	* This view has the following attributes, Customer id, customer last name, customer first name, customer middle initial and total lifetime purchased amount.<br/>
+     	* It returns the top ten customers sorted by total dollar amount in sales from highest to lowest.<br/>
+    	* dymz_sales.customer_monthly_sales_2019_partitioned_view<br/>
+     	* This view contains the following attributes Customerid, Lastname, Firstname, Salesyear, Salesmonth, Total<br/>
+     	* Unpartitioned views: Fetched 6597 row(s) in 5.35s<br/>
+     	* Partitioned views:Fetched 6597 row(s) in 6.96s<br/>
+     	* In our case, sometimes we experience inconsistent performance due to network latency which results in the unpartitioned view to be faster than the partitioned view.<br/>
 
