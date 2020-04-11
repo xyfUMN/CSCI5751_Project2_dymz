@@ -129,7 +129,7 @@ drop_sales_database() {
 
 create_views(){
     echo Create views1 from dymz_sales database
-    impala-shell -f "$sql_DIR"/step2a.sql
+    impala-shell -f "$sql_DIR"/Step2a.sql
 }
 
 drop_views(){
