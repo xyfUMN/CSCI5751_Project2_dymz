@@ -3,7 +3,7 @@ team name: **dymz** <br/>
 team member: **Maryam Forootaninia, Dengyuan Wang, Zhengyuan Shen, Abinash Sinha, Yifan Xu** <br/>
 slack channel name: **dymz**
 
-Deployment RunBook section:
+**Deployment RunBook section:**
 
 To update library related to github In VM run:	sudo yum update -y nss curl libcurl<br/>
 * Get source code: git clone https://github.com/xyfUMN/CSCI5751_Project2_dymz.git<br/>
@@ -20,7 +20,7 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
 * To view tables and views, please use impala-shell and query as following:<br/>
 	* Show databases;<br/>
 	* Select * from [database_name].[Table_name/View_name];<br/>
-* User Documentation section:<br/>
+**User Documentation section:**<br/>
 * Sales Data Model:<br/>
 
 
