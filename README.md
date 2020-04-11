@@ -22,15 +22,15 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
 	* Select * from [database_name].[Table_name/View_name];<br/>
 	
 **User Documentation section:**<br/>
-* 1. Sales Data Model:<br/>
+* **1. Sales Data Model:**<br/>
 ![alt text](https://github.com/xyfUMN/CSCI5751_Project2_dymz/blob/master/sales_data_model.png)
 
-* 2. List of Databases Created:<br/>
+* **2. List of Databases Created:**<br/>
   * dymz_sales_raw: This database is created from the raw data provided from 
   https://csci5751-2020sp.s3-us-west-2.amazonaws.com/sales-data/salesdata.tar.gz. (This raw data contains the csv files)<br/>
  
   * dymz_sales: This database includes managed tables in parquet format from the raw sales data and the views created from raw    data.<br/>
-* 3. List of Tables Created:(syntax: [database_name].[table_name])<br/>
+* **3. List of Tables Created:(syntax: [database_name].[table_name]):**<br/>
   * attributes for each table reffrence to sales data model figure listed above<br/>
   * External Tables:<br/>
    	* dymz_sales_raw.sales, dymz_sales_raw.employees, dymz_sales_raw.customers, dymz_sales_raw.products<br/>
@@ -39,13 +39,13 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
     	* dymz_sales.sales, dymz_sales.employees, dymz_sales.customers, dymz_sales.products<br/>
     	* dymz_sales.product_sales_partition, dymz_sales.product_region_sales_partition<br/>
 
-* 4. List of Views:<br/>
-    	* dymz_sales.customer_monthly_sales_2019_view:<br/>
+* **4. List of Views:**<br/>
+    	* **dymz_sales.customer_monthly_sales_2019_view:**<br/>
      		* This view contains the following attributes; customer id, customer last name, customer first name, year, month,      aggregate<br/> total amount of all products purchased by month for 2019.<br/>
-   	 * dymz_sales.top_ten_customers_amount_view	<br/>
+   	* **dymz_sales.top_ten_customers_amount_view:**<br/>
      		* This view has the following attributes, Customer id, customer last name, customer first name, customer middle initial and total lifetime purchased amount.<br/>
      		* It returns the top ten customers sorted by total dollar amount in sales from highest to lowest.<br/>
-    	* dymz_sales.customer_monthly_sales_2019_partitioned_view<br/>
+    	* **dymz_sales.customer_monthly_sales_2019_partitioned_view:**<br/>
      		* This view contains the following attributes Customerid, Lastname, Firstname, Salesyear, Salesmonth, Total<br/>
      		* Unpartitioned views: Fetched 6597 row(s) in 5.35s<br/>
      		* Partitioned views:Fetched 6597 row(s) in 6.96s<br/>
