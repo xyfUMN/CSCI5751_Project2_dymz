@@ -41,13 +41,13 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
 
 * **4. List of Views:**<br/>
     	* **dymz_sales.customer_monthly_sales_2019_view:**<br/>
-     		* This view contains the following attributes; customer id, customer last name, customer first name, year, month,      aggregate<br/> total amount of all products purchased by month for 2019.<br/>
+     		* This view contains the following attributes; customer id, customer last name, customer first name, year, 			month,aggregate total amount of all products purchased by month for 2019.<br/>
    	* **dymz_sales.top_ten_customers_amount_view:**<br/>
-     		* This view has the following attributes, Customer id, customer last name, customer first name, customer middle initial and total lifetime purchased amount.<br/>
+     		* This view has the following attributes, Customer id, customer last name, customer first name, customer 			middle initial and total lifetime purchased amount.<br/>
      		* It returns the top ten customers sorted by total dollar amount in sales from highest to lowest.<br/>
     	* **dymz_sales.customer_monthly_sales_2019_partitioned_view:**<br/>
-     		* This view contains the following attributes Customerid, Lastname, Firstname, Salesyear, Salesmonth, Total<br/>
+     		* This view contains the following attributes Customerid, Lastname, Firstname, Salesyear, Salesmonth, 				Total<br/>
      		* Unpartitioned views: Fetched 6597 row(s) in 5.35s<br/>
      		* Partitioned views:Fetched 6597 row(s) in 6.96s<br/>
-     		* In our case, sometimes we experience inconsistent performance due to network latency which results in the unpartitioned view to be faster than the partitioned view.<br/>
+     		* In our case, sometimes we experience inconsistent performance due to network latency which results in the 			unpartitioned view to be faster than the partitioned view.<br/>
 
