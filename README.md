@@ -34,7 +34,7 @@ To update library related to github In VM run:	sudo yum update -y nss curl libcu
   * attributes for each table reffrence to sales data model figure listed above<br/>
   * External Tables:<br/>
    	* dymz_sales_raw.sales, dymz_sales_raw.employees, dymz_sales_raw.customers, dymz_sales_raw.products<br/>
-   * Created and loaded the table based on the structure and content of the given raw csv files.<br/>
+   	* Created and loaded the table based on the structure and content of the given raw csv files.<br/>
   * Parquet Tables: <br/>
     	* dymz_sales.sales, dymz_sales.employees, dymz_sales.customers, dymz_sales.products<br/>
     	* dymz_sales.product_sales_partition, dymz_sales.product_region_sales_partition<br/>
